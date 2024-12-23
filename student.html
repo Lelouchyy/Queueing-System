@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Registration Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 700px;
+            max-width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .checkbox-group {
+            margin-bottom: 8px;
+        }
+
+        .checkbox-group div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #007BFF;
+        }
+
+        .checkbox-group label {
+            font-size: 17px;
+            color: #333;
+            margin-left: 2px;
+            margin-top: 2px;
+            margin-bottom: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Square modal */
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .modal button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Queue Registration Form</h2>
+        <form action="" method="POST">
+            <!-- Full Name -->
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <!-- Student ID -->
+            <label for="student-id">Student ID</label>
+            <input type="text" id="student-id" name="student-id" placeholder="Enter your student ID" required>
+
+            <!-- Payment Transaction Section -->
+            <label for="payment-purpose">Select Payment Purpose</label>
+            <select id="payment-purpose" name="payment-purpose" required>
+                <option value="" disabled selected>Select your payment purpose</option>
+                <option value="uniform">Uniform</option>
+                <option value="tuition">Tuition</option>
+                <option value="balance">Balance</option>
+            </select>
+
+            <!-- Request Form Section -->
+            <div class="section-title">Select Request Purpose</div>
+            <div class="checkbox-group" id="request-purpose-group">
+                <div>
+                    <input type="checkbox" id="copy-of-grades" name="request-purpose[]" value="COPY OF GRADES">
+                    <label for="copy-of-grades">Copy of Grades</label>
+                </div>
+                <!-- Other checkboxes here... -->
+                <div>
+                    <input type="checkbox" id="certificate-of-grades" name="request-purpose[]" value="CERTIFICATE OF GRADES">
+                    <label for="certificate-of-grades">Certificate of Grades</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="certificate-of-enrollment" name="request-purpose[]" value="CERTIFICATE OF ENROLLMENT">
+                    <label for="certificate-of-enrollment">Certificate of Enrollment</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="certificate-of-honorable-dismissal" name="request-purpose[]" value="CERTIFICATE OF HONORABLE DISMISSAL">
+                    <label for="certificate-of-honorable-dismissal">Certificate of Honorable Dismissal</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="good-moral-certificate" name="request-purpose[]" value="GOOD MORAL CERTIFICATE">
+                    <label for="good-moral-certificate">Good Moral Certificate</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="certificate-of-english-medium" name="request-purpose[]" value="CERTIFICATE OF ENGLISH MEDIUM OF INSTRUCTION">
+                    <label for="certificate-of-english-medium">Certificate of English Medium of Instruction</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="certificate-of-gwa" name="request-purpose[]" value="CERTIFICATE OF GWA">
+                    <label for="certificate-of-gwa">Certificate of GWA</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="certificate-as-graduate" name="request-purpose[]" value="CERTIFICATE AS GRADUATE">
+                    <label for="certificate-as-graduate">Certificate as Graduate</label>
+                </div>
+
+                <!-- Other Option -->
+                <div>
+                    <input type="checkbox" id="other-checkbox" name="request-purpose[]" value="Other">
+                    <label for="other-checkbox">Other</label>
+                </div>
+
+                <!-- Other Input Field -->
+                <div id="other-input-container" style="display: none;">
+                    <label for="other-text">Please specify:</label>
+                    <input type="text" id="other-text" name="other-text" placeholder="Enter your request">
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Queue Number Pop-up Modal -->
+    <div id="queueModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="queueMessage"></p>
+            <button onclick="closeModal()">Okay</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate a random queue number
+        function generateQueueNumber() {
+            return Math.floor(Math.random() * 1000) + 1; // Generates a random number between 1 and 1000
+        }
+
+        // Function to show the queue number modal
+        function showQueueModal(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the user name
+            const name = document.getElementById('name').value;
+
+            // Calculate the total price (PHP150 per request)
+            const selectedRequests = [];
+            const checkboxes = document.querySelectorAll('input[name="request-purpose[]"]:checked');
+            let totalAmount = 0;
+
+            checkboxes.forEach(checkbox => {
+                selectedRequests.push(checkbox.value);
+                totalAmount += 150; // Each selected request adds PHP150
+            });
+
+            // Generate the queue number
+            const queueNumber = generateQueueNumber();
+
+            // Show the pop-up modal with the queue message
+            const queueMessage = `Hello ${name}! Your number is ${queueNumber}. You may continue inside and wait for your name to be called or shown on the screen. Please prepare the amount of PHP ${totalAmount}.`;
+            document.getElementById('queueMessage').textContent = queueMessage;
+
+            // Show the modal
+            document.getElementById('queueModal').style.display = 'block';
+        }
+
+        // Add event listener to the form to show the queue number modal when submitted
+        document.querySelector('form').addEventListener('submit', showQueueModal);
+
+        // Function to close the modal and redirect to index.html
+        function closeModal() {
+            document.getElementById('queueModal').style.display = 'none';
+            window.location.href = 'index.html'; // Redirect to index.html
+        }
+          // Function to format the student ID
+          function formatStudentID(event) {
+    let studentID = event.target.value.replace(/\D/g, ''); // Remove non-digit characters
+    if (studentID.length > 14) {
+        studentID = studentID.slice(0, 14); // Ensure the input doesn't exceed 14 characters
+    }
+
+    // Insert hyphens at the correct positions
+    if (studentID.length >= 3) {
+        studentID = studentID.slice(0, 2) + '-' + studentID.slice(2);
+    }
+    if (studentID.length >= 8) {
+        studentID = studentID.slice(0, 7) + '-' + studentID.slice(7);
+    }
+    
+
+    event.target.value = studentID; // Set the formatted value back to the input
+}
+
+        
+        // Add event listener for the student ID input field
+        document.getElementById('student-id').addEventListener('input', formatStudentID);
+
+        // Function to generate a random queue number
+        function generateQueueNumber() {
+            return Math.floor(Math.random() * 1000) + 1; // Generates a random number between 1 and 1000
+        }
+
+
+
+        
+    </script>
+</body>
+</html>
